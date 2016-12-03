@@ -26,21 +26,21 @@ class RouteRepository {
 
     /**
      * Constructor for the routeRepository
-     * @param path The path
+     * @param input A bufferedReader with the input file
      * @throws IOException if the supplied path is nonexistant or the file is formatted wrongly
      */
-    RouteRepository(String path) throws IOException {
-        routes = readRouteFile(path);
+    RouteRepository(BufferedReader input) throws IOException {
+        routes = readRouteFile(input);
     }
 
     /**
-     * A function that accepts a file path, and initialises routes for each line of the file
-     * @param path A string containing the path to the file to be parsed
+     * A function that BufferedReader, and initialises routes for each line
+     * @param br A BufferedReader containing data to parse
      * @return a List of route objects filled with data from the file
      * @throws IOException if the file is nonexistant or invalid
      */
-    private static List<Route> readRouteFile(String path) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(path));
+    private static List<Route> readRouteFile(BufferedReader br) throws IOException {
+        ;
         // The first line defines how many routes there are
         String firstLine = br.readLine();
         int numberOfRoutes;
@@ -128,7 +128,7 @@ class RouteRepository {
         } else {
             response.direct_bus_route = false;
         }
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().create();
         //System.out.println(gson.toJson(response));
         return gson.toJson(response);
     }

@@ -6,7 +6,9 @@ package busapi;
  * Created by Kevin Norman on 02/12/16.
  */
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import static spark.Spark.*;
@@ -17,7 +19,7 @@ public class Main {
      * @param args = First argument should be a path to the file that should parsed.
      */
     public static void main(String[] args) {
-	setPort(8088);
+	port(8088);
         RouteRepository allRoutes;
         File f;
         try {
@@ -32,7 +34,7 @@ public class Main {
         }
 
         try {
-            allRoutes = new RouteRepository(f.getAbsolutePath());
+            allRoutes = new RouteRepository(new BufferedReader(new FileReader(f.getAbsolutePath())));
             before((req, res) -> res.header("Access-Control-Allow-Origin", "*"));
 
             get("/api/direct", (req, res) ->

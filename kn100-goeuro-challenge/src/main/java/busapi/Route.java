@@ -1,13 +1,12 @@
 package busapi;
 
+import java.util.Map;
+
 /**
  * Route.java
  * Class that stores a route ID along with a key/value pair consisting of the stops on the route and their ordering.
  * Created by Kevin Norman on 02/12/16.
  */
-
-import java.util.Map;
-
 public class Route {
     /** The route ID */
     private int routeID;
