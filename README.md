@@ -11,7 +11,7 @@ A microservice which:
 * Builds with Gradle, I've also included a task called fatJar if you desire a Jar that bundles all the dependencies together.
 
 ## Performance
-* Internally uses a Treemap collection for storage of route data, which is held in memory. This guarantees Θ(log(n)) performance in all cases.
+* Internally uses a Treemap collection for storage of route data, which is held in memory. This guarantees Θ(log(n)) performance in the average case, and Θ(n) in the worst case.
 * On a dataset containing 100,000 routes, each with 1000 stops, where the stop IDs are random numbers between 0 and 1,000,000, the API is able to respond to any query almost instantly.
 
 ## Usage
@@ -21,6 +21,7 @@ I have included example scripts in the form of service.sh, which you can use ```
 
 ## Contact me
 [@normankev141](https://twitter.com/normankev141) - Feel free to tweet at me!
+
 [kn100.me](https://kn100.me)
 
 
