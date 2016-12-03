@@ -17,7 +17,7 @@ public class Main {
      * @param args = First argument should be a path to the file that should parsed.
      */
     public static void main(String[] args) {
-
+	setPort(8088);
         RouteRepository allRoutes;
         File f;
         try {
@@ -35,7 +35,7 @@ public class Main {
             allRoutes = new RouteRepository(f.getAbsolutePath());
             before((req, res) -> res.header("Access-Control-Allow-Origin", "*"));
 
-            get("/direct", (req, res) ->
+            get("/api/direct", (req, res) ->
                     allRoutes.routePossible(req.queryParams("dep_sid"),
                                             req.queryParams("arr_sid")));
         } catch (IllegalArgumentException|IOException e) {

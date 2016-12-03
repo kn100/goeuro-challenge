@@ -30,7 +30,6 @@ class RouteRepository {
      * @throws IOException if the supplied path is nonexistant or the file is formatted wrongly
      */
     RouteRepository(String path) throws IOException {
-        System.out.println("Attempting to parse route file");
         routes = readRouteFile(path);
     }
 
@@ -130,7 +129,7 @@ class RouteRepository {
             response.direct_bus_route = false;
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        System.out.println(gson.toJson(response));
+        //System.out.println(gson.toJson(response));
         return gson.toJson(response);
     }
 
