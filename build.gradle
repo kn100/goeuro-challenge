@@ -1,0 +1,40 @@
+group 'me.kn100.goeurobusapi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+repositories {
+    mavenCentral()
+
+}
+
+
+jar {
+    manifest {
+        attributes "Main-Class": "busapi.Main"
+    }
+    baseName = 'goeuro-busapi'
+    version =  '1.0-SNAPSHOT'
+}
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'busapi.Main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.0'
+    // https://mvnrepository.com/artifact/com.sparkjava/spark-core
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.3'
+}
