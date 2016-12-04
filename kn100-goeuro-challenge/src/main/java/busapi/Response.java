@@ -1,23 +1,16 @@
 package busapi;
 
-/**
- * Response.java
- * Defines the form of the data to be returned to the client on a successful request.
- *
- * Created by Kevin Norman on 02/12/16.
- */
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-class Response {
-    /**
-     * The departing stations ID
-     */
-    int dep_sid;
-    /**
-     * The arriving stations ID
-     */
-    int arr_sid;
-    /**
-     * True if the route is possible, flase if not
-     */
-    boolean direct_bus_route;
+/**
+ * Interface for API responses.
+ * Created by Kevin Norman on 04/12/16.
+ */
+public interface Response {
+    default String jsonify() {
+        Gson gson = new GsonBuilder().create();
+        //System.out.println(gson.toJson(response));
+        return gson.toJson(this);
+    }
 }

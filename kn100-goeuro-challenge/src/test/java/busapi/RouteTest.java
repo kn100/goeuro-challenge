@@ -13,11 +13,11 @@ import static org.junit.Assert.*;
  * Created by Kevin Norman on 03/12/16.
  */
 public class RouteTest {
-    Route routeTest;
+    static Route routeTest;
 
 
     @BeforeClass
-    public void setUp() throws Exception
+    public static void setUp() throws Exception
     {
         Map<Integer, Integer> inRouteStops = new TreeMap<Integer,Integer>();
         //Key = stop ID, Value = ordering;
@@ -26,7 +26,7 @@ public class RouteTest {
         inRouteStops.put(3,3);
         inRouteStops.put(4,2);
 
-        this.routeTest = new Route();
+        routeTest = new Route();
         routeTest.setRouteID(5);
         routeTest.setRouteStops(inRouteStops);
 

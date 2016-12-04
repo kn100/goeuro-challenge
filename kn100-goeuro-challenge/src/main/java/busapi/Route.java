@@ -36,13 +36,8 @@ public class Route {
      */
     boolean routePossible(int src, int des) {
         if(this.routeStops.containsKey(src) && this.routeStops.containsKey(des)) {
-            if(this.routeStops.get(src) < routeStops.get(des)) return true;
+            return (this.routeStops.get(src) < routeStops.get(des));
         }
         return false;
-    }
-
-    /** @return string representation showing route number, as well as stops on this route, and their ordering. */
-    public String toString() {
-        return String.format("Route number %d, Route stops: %s", this.routeID, this.routeStops.toString());
     }
 }
